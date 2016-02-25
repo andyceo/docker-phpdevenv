@@ -11,7 +11,7 @@ MAINTAINER Andreev Andrey
 
 # Set neccessary environment variables
 ENV DOCKER_IMAGE_NAME phpdevenv
-ENV DOCKER_IMAGE_VERSION 1.1
+ENV DOCKER_IMAGE_VERSION 1.2
 ENV TERM xterm
 
 # Install all needed utilities
@@ -80,11 +80,5 @@ ADD entrypoint.sh /entrypoint.sh
 
 # Expose ports
 EXPOSE 22 80
-
-# Set the volume work dir
-VOLUME ["/var/www"]
-
-# Set the volume for logs
-VOLUME ["/var/log"]
 
 ENTRYPOINT ["/entrypoint.sh"]
