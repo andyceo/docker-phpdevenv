@@ -11,7 +11,7 @@ MAINTAINER Andreev Andrey
 
 # Set neccessary environment variables
 ENV DOCKER_IMAGE_NAME phpdevenv
-ENV DOCKER_IMAGE_VERSION 1.0
+ENV DOCKER_IMAGE_VERSION 1.1
 ENV TERM xterm
 
 # Install all needed utilities
@@ -44,6 +44,7 @@ RUN apt-get update && \
         php5-memcache \
         php5-mysql \
         php5-xdebug \
+        phpunit \
         php-pear \
         rsync \
         screen \
@@ -54,6 +55,10 @@ RUN apt-get update && \
     apt-get clean && rm -rf /tmp/* /var/tmp/* && \
     curl -s https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
+    curl https://phar.phpunit.de/phpunit.phar -LSso /usr/local/bin/phpunit && \
+    chmod +x /usr/local/bin/phpunit && \
+    curl http://get.sensiolabs.org/php-cs-fixer.phar -LSso /usr/local/bin/php-cs-fixer && \
+    chmod +x /usr/local/bin/php-cs-fixer && \
     locale-gen ru_RU && \
     locale-gen ru_RU.UTF-8 && \
     update-locale
@@ -71,7 +76,7 @@ COPY config/php/www.conf /etc/php5/fpm/pool.d/www.conf
 COPY config/xdebug/xdebug.ini /etc/php5/mods-available/xdebug.ini
 
 # Copy entrypoint to container
-ADD start.sh /start.sh
+ADD entrypoint.sh /entrypoint.sh
 
 # Expose ports
 EXPOSE 22 80
@@ -82,4 +87,4 @@ VOLUME ["/var/www"]
 # Set the volume for logs
 VOLUME ["/var/log"]
 
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
