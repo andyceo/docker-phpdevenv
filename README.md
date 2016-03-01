@@ -6,10 +6,13 @@
 
         sudo docker push andyceo/phpdevenv:1.2
 
-3. Start container:
+3. Start container with port prefix 2500:
 
-        sudo docker run -d --name phpdevenv \
+        PORT_PREFIX=2500 && sudo docker run \
+            --detach \
+            --name phpdevenv \
             --restart always \
-            -p 2580:80 -p 2522:22 \
-            --hostname phpdevenv
+            --hostname phpdevenv \
+            -p `echo $PORT_PREFIX+80|bc`:80 \
+            -p `echo $PORT_PREFIX+22|bc`:22 \
             andyceo/phpdevenv:1.2
