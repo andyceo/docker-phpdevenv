@@ -16,3 +16,9 @@
             -p `echo $PORT_PREFIX+80|bc`:80 \
             -p `echo $PORT_PREFIX+22|bc`:22 \
             andyceo/phpdevenv:1.2
+
+4. If you want to run mysql in container and link your phpdevenv with it:
+
+        sudo docker run -d --restart always --name mysql -v /data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD="123qwe" mysql:5.5.48
+
+    And add link to mysql container to command from 3: `--link mysql`.
