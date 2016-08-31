@@ -1,0 +1,11 @@
+server {
+    listen *:80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /usr/share/nginx/html;
+
+    # Make site accessible from http://localhost/ and let serve
+    # requests without "HOST" header
+    server_name "";
+    server_name localhost;
+}
