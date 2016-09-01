@@ -13,6 +13,7 @@
             --name phpdevenv \
             --restart always \
             --hostname phpdevenv \
+            --net docknet
             -p `echo $PORT_PREFIX+80|bc`:80 \
             -p `echo $PORT_PREFIX+22|bc`:22 \
             andyceo/phpdevenv:1.3

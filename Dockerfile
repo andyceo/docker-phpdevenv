@@ -21,7 +21,10 @@ RUN echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/source
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
     apt-get update && \
     apt-get upgrade -y && \
+    export PHP_MODULES="bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug" && \
+    export PHP_MODULES71="bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip" && \
     apt-get install -y \
+        apt-utils \
         aptitude \
         asr-manpages \
         curl \
@@ -42,47 +45,10 @@ RUN echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/source
         nginx \
         openssh-server \
 
-        php5.5 \
-        php5.5-curl \
-        php5.5-fpm \
-        php5.5-intl \
-        php5.5-json \
-        php5.5-ldap \
-        php5.5-mbstring \
-        php5.5-mcrypt \
-        php5.5-mysql \
-        php5.5-opcache \
-        php5.5-soap \
-        php5.5-sybase \
-        php5.5-xml \
-        php5.5-zip \
-        php5.5-memcache \
-        php5.5-redis \
-        php5.5-imagick \
-        php5.5-xdebug \
-
-        php7.0 \
-        php7.0-bcmath \
-        php7.0-cli \
-        php7.0-common \
-        php7.0-curl \
-        php7.0-fpm \
-        php7.0-intl \
-        php7.0-json \
-        php7.0-ldap \
-        php7.0-mbstring \
-        php7.0-mcrypt \
-        php7.0-mysql \
-        php7.0-opcache \
-        php7.0-readline \
-        php7.0-soap \
-        php7.0-sybase \
-        php7.0-xml \
-        php7.0-zip \
-        php7.0-memcache \
-        php7.0-redis \
-        php7.0-imagick \
-        php7.0-xdebug \
+        php5.5 `echo " $PHP_MODULES" | sed "s/ / php5.5-/g"` \
+        php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
+        php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
+        php7.1 `echo " $PHP_MODULES71" | sed "s/ / php7.1-/g"` \
 
         phpunit \
         php-pear \
@@ -95,32 +61,47 @@ RUN echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/source
         tmux \
         wget && \
 
-    apt-get purge apache2 && \
+    apt-get purge apache2 -y && \
 
     apt-get clean && rm -rf /tmp/* /var/tmp/* && \
     rm /etc/alternatives/php && ln -s /usr/bin/php5.5 /etc/alternatives/php && \
 
+    # Composer
     curl -s https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
 
+    # PHPUnit
     curl https://phar.phpunit.de/phpunit.phar -LSso /usr/local/bin/phpunit && \
     chmod +x /usr/local/bin/phpunit && \
 
+    #PHP-CS-Fixer
     curl http://get.sensiolabs.org/php-cs-fixer.phar -LSso /usr/local/bin/php-cs-fixer && \
     chmod +x /usr/local/bin/php-cs-fixer && \
 
+    # Codeception
     curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept && \
     chmod a+x /usr/local/bin/codecept && \
 
+    # NodeJS 6.x
+    curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g gulp && \
+    npm install -g bower && \
+
+    # Elastic Beats
+    curl https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
+    echo "deb https://packages.elastic.co/beats/apt stable main" |  tee -a /etc/apt/sources.list.d/beats.list && \
+    apt-get update && apt-get install filebeat && \
+
     locale-gen ru_RU && \
     locale-gen ru_RU.UTF-8 && \
-    update-locale
+    update-locale && \
 
-# Setup root user password
-RUN echo 'root:123qwe' | chpasswd
+    # Setup root user password
+    echo 'root:123qwe' | chpasswd
 
-# Create directory for privelege separation for sshd
-RUN mkdir /var/run/sshd
+# We also must create directories for privelege separation for sshd: /var/run/sshd, and /var/run/php for php.
+# We do so in entrypoint.sh, because /var/run can be mounted at temporary filesystem.
 
 # Copy application configs
 COPY etc /etc
