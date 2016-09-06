@@ -10,8 +10,6 @@ FROM ubuntu:16.04
 MAINTAINER Andreev Andrey
 
 # Set neccessary environment variables
-ENV DOCKER_IMAGE_NAME phpdevenv
-ENV DOCKER_IMAGE_VERSION 1.3
 ENV TERM xterm
 
 # Install all needed utilities
