@@ -78,6 +78,7 @@ RUN echo "Starting main RUN section" && \
         phpunit \
 
         python-dev \
+        python-pip \
         redis-tools \
         rsync \
         screen \
