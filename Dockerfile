@@ -75,6 +75,7 @@ RUN echo "Starting main RUN section" && \
         php-pear \
         phpunit \
 
+        pwgen \
         python-dev \
         python-pip \
         redis-tools \
@@ -123,7 +124,7 @@ RUN echo "Starting main RUN section" && \
 
     # Installing Go binaries and add "/usr/local/go/bin" to the environment $PATH variable
     curl https://storage.googleapis.com/golang/$GO_ARCHIVE_FILENAME -LSso /usr/local/$GO_ARCHIVE_FILENAME && \
-    tar xf /usr/local/$GO_ARCHIVE_FILENAME && \
+    tar -C /usr/local -xzf /usr/local/$GO_ARCHIVE_FILENAME && \
     rm /usr/local/$GO_ARCHIVE_FILENAME && \
     sed -i 's/^PATH="\(.*\)"$/PATH="\1:\/usr\/local\/go\/bin"/g' /etc/environment && \
 
