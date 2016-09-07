@@ -17,8 +17,11 @@ LABEL org.labelschema.description="This is the image with 4 PHP versions and bas
       org.labelschema.vcs-url="https://github.com/andyceo/docker-phpdevenv" \
       org.labelschema.vendor="Ruware"
 
-# Set neccessary environment variables
+# Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
+ENV PHP_MODULES "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
+ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
+ENV GO_ARCHIVE_FILENAME go1.7.linux-amd64.tar.gz
 
 # Install all needed utilities
 RUN echo "Starting main RUN section" && \
@@ -38,11 +41,6 @@ RUN echo "Starting main RUN section" && \
     # Prepare package manager for installing packages
     apt-get update && \
     apt-get upgrade -y && \
-
-    # Declare variables for installing popular PHP extensions
-    export PHP_MODULES="bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug" && \
-    export PHP_MODULES71="bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip" && \
-
     apt-get install -y \
         ansible \
         aptitude \
@@ -122,6 +120,12 @@ RUN echo "Starting main RUN section" && \
 
     # Installing ansible-lint with pip
     pip install ansible-lint && \
+
+    # Installing Go binaries and add "/usr/local/go/bin" to the environment $PATH variable
+    curl https://storage.googleapis.com/golang/$GO_ARCHIVE_FILENAME -LSso /usr/local/$GO_ARCHIVE_FILENAME && \
+    tar xf /usr/local/$GO_ARCHIVE_FILENAME && \
+    rm /usr/local/$GO_ARCHIVE_FILENAME && \
+    sed -i 's/^PATH="\(.*\)"$/PATH="\1:\/usr\/local\/go\/bin"/g' /etc/environment && \
 
     locale-gen ru_RU && \
     locale-gen ru_RU.UTF-8 && \
