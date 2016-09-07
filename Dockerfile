@@ -9,31 +9,56 @@ FROM ubuntu:16.04
 # File Author / Maintainer
 MAINTAINER Andreev Andrey
 
+# Labels
+LABEL org.labelschema.description="This is the image with 4 PHP versions and basic developers tools. It can be used as lightweight virtual machine for developers." \
+      org.labelschema.docker.cmd="docker run --detach --name phpdevenv --restart always --hostname phpdevenv --net YOUR_CUSTOM_BRIDGE_NETWORK_NAME -p 40080:80 -p 40022:22 andyceo/phpdevenv:latest" \
+      org.labelschema.name="phpdevenv" \
+      org.labelschema.schema-version="1.0" \
+      org.labelschema.vcs-url="https://github.com/andyceo/docker-phpdevenv" \
+      org.labelschema.vendor="Ruware"
+
 # Set neccessary environment variables
 ENV TERM xterm
 
 # Install all needed utilities
-RUN echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list && \
+RUN apt-get install -y software-properties-common && \
+
+    # Add PPA repository for ansible
+    apt-add-repository -y ppa:ansible/ansible && \
+
+    # Add repository and repository key for nginx official repository
+    echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62 && \
+
+    # Add repository and repository key for php PPA repository
     echo 'deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main' > /etc/apt/sources.list.d/php.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
+
+    # Prepare package manager for installing packages
     apt-get update && \
     apt-get upgrade -y && \
+
+    # Declare variables for installing popular PHP extensions
     export PHP_MODULES="bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug" && \
     export PHP_MODULES71="bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip" && \
+
     apt-get install -y \
-        apt-utils \
+        ansible \
         aptitude \
+        apt-utils \
         asr-manpages \
+        build-essential \
         curl \
         default-jre \
-        freebsd-manpages \
         drush \
+        freebsd-manpages \
         funny-manpages \
         git \
         gmt-common \
         htop \
         imagemagick \
+        libffi-dev \
+        libssl-dev \
         man2html \
         manpages \
         manpages-dev \
@@ -48,9 +73,10 @@ RUN echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/source
         php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
         php7.1 `echo " $PHP_MODULES71" | sed "s/ / php7.1-/g"` \
 
-        phpunit \
         php-pear \
+        phpunit \
 
+        python-dev \
         redis-tools \
         rsync \
         screen \
@@ -90,6 +116,9 @@ RUN echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/source
     curl https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
     echo "deb https://packages.elastic.co/beats/apt stable main" |  tee -a /etc/apt/sources.list.d/beats.list && \
     apt-get update && apt-get install filebeat && \
+
+    # Installing ansible-lint with pip
+    pip install ansible-lint && \
 
     locale-gen ru_RU && \
     locale-gen ru_RU.UTF-8 && \
