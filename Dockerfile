@@ -21,11 +21,11 @@ LABEL org.labelschema.description="This is the image with 4 PHP versions and bas
 ENV TERM xterm
 
 # Install all needed utilities
-RUN # First, adding new repositories.
+RUN echo "Starting main RUN section" && \
 
     # Add PPA repository for ansible
     echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" >> /etc/apt/sources.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6125E2A8C77F && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7BB9C367 && \
 
     # Add repository and repository key for nginx official repository
     echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list && \
