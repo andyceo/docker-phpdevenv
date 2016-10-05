@@ -56,6 +56,8 @@ RUN echo "Starting main RUN section" && \
         gmt-common \
         htop \
         imagemagick \
+        iputils-arping \
+        iputils-ping \
         libffi-dev \
         libssl-dev \
         man2html \
