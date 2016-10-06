@@ -100,8 +100,7 @@ RUN echo "Starting main RUN section" && \
 
     # Drush (drush from Ubuntu packages installed above)
     git clone https://github.com/drush-ops/drush.git /usr/local/share/drush && \
-    cd /usr/local/share/drush/ && \
-    composer install && \
+    composer install -d /usr/local/share/drush/ && \
     ln -s /usr/local/share/drush/drush /usr/local/bin/drush && \
 
     # PHPUnit
