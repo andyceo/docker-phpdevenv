@@ -21,7 +21,7 @@ LABEL org.labelschema.description="This is the image with 4 PHP versions and bas
 ENV TERM xterm
 ENV PHP_MODULES "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
-ENV GO_ARCHIVE_FILENAME go1.7.linux-amd64.tar.gz
+ENV GO_ARCHIVE_FILENAME go1.7.1.linux-amd64.tar.gz
 
 # Install all needed utilities
 RUN echo "Starting main RUN section" && \
@@ -98,11 +98,17 @@ RUN echo "Starting main RUN section" && \
     curl -s https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
 
+    # Drush (drush from Ubuntu packages installed above)
+    git clone https://github.com/drush-ops/drush.git /usr/local/share/drush && \
+    cd /usr/local/share/drush/ && \
+    composer install && \
+    ln -s /usr/local/share/drush/drush /usr/local/bin/drush && \
+
     # PHPUnit
     curl https://phar.phpunit.de/phpunit.phar -LSso /usr/local/bin/phpunit && \
     chmod +x /usr/local/bin/phpunit && \
 
-    #PHP-CS-Fixer
+    # PHP-CS-Fixer
     curl http://get.sensiolabs.org/php-cs-fixer.phar -LSso /usr/local/bin/php-cs-fixer && \
     chmod +x /usr/local/bin/php-cs-fixer && \
 
