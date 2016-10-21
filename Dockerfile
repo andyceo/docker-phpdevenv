@@ -21,7 +21,7 @@ LABEL org.labelschema.description="This is the image with 4 PHP versions and bas
 ENV TERM xterm
 ENV PHP_MODULES "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
-ENV GO_ARCHIVE_FILENAME go1.7.1.linux-amd64.tar.gz
+ENV GO_ARCHIVE_FILENAME go1.7.3.linux-amd64.tar.gz
 
 # Install all needed utilities
 RUN echo "Starting main RUN section" && \
@@ -94,7 +94,7 @@ RUN echo "Starting main RUN section" && \
     apt-get purge apache2 -y && \
 
     apt-get clean && rm -rf /tmp/* /var/tmp/* && \
-    rm /etc/alternatives/php && ln -s /usr/bin/php5.5 /etc/alternatives/php && \
+    rm /etc/alternatives/php && ln -s /usr/bin/php7.1 /etc/alternatives/php && \
 
     # Composer
     curl -s https://getcomposer.org/installer | php && \
