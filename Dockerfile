@@ -17,6 +17,8 @@ LABEL org.labelschema.description="This is the image with 4 PHP versions and bas
       org.labelschema.vcs-url="https://github.com/andyceo/docker-phpdevenv" \
       org.labelschema.vendor="Ruware"
 
+LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname phpdevenv --net docknet -p "80:80" -p "22:22" \${IMAGE}
+
 # Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
 ENV PHP_MODULES "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
