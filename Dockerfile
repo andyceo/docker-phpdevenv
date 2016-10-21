@@ -49,6 +49,7 @@ RUN echo "Starting main RUN section" && \
         build-essential \
         curl \
         default-jre \
+        dnsutils \
         drush \
         freebsd-manpages \
         funny-manpages \
@@ -87,6 +88,7 @@ RUN echo "Starting main RUN section" && \
         supervisor \
         telnet \
         tmux \
+        ubuntu-standard \
         wget && \
 
     apt-get purge apache2 -y && \
