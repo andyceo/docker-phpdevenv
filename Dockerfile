@@ -67,6 +67,7 @@ RUN echo "Starting main RUN section" && \
         manpages \
         manpages-dev \
         mc \
+        mysql-client \
         nano \
         net-tools \
         nginx \
