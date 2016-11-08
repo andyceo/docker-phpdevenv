@@ -21,7 +21,7 @@ LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname ph
 
 # Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
-ENV PHP_MODULES "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
+ENV PHP_MODULES "amqp bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.3.linux-amd64.tar.gz
 
@@ -84,6 +84,7 @@ RUN echo "Starting main RUN section" && \
         pwgen \
         python-dev \
         python-pip \
+        python-pika \
         redis-tools \
         rsync \
         screen \
