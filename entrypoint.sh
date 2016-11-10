@@ -2,6 +2,6 @@
 
 set -e
 
-mkdir -p /var/run/php /var/run/sshd
+mkdir -p /var/run/{php,sshd,fail2ban}
 
 exec /usr/bin/supervisord
