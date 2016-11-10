@@ -49,8 +49,10 @@ RUN echo "Starting main RUN section" && \
         apt-utils \
         asr-manpages \
         build-essential \
+        cron \
         curl \
         default-jre \
+        denyhosts \
         dnsutils \
         drush \
         freebsd-manpages \
