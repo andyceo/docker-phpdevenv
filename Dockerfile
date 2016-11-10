@@ -53,7 +53,6 @@ RUN echo "Starting main RUN section" && \
         default-jre \
         dnsutils \
         drush \
-        fail2ban \
         freebsd-manpages \
         funny-manpages \
         git \
