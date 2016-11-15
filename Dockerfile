@@ -49,6 +49,7 @@ RUN echo "Starting main RUN section" && \
         apt-utils \
         asr-manpages \
         build-essential \
+        cmake \
         cron \
         curl \
         default-jre \
@@ -63,6 +64,7 @@ RUN echo "Starting main RUN section" && \
         imagemagick \
         iputils-arping \
         iputils-ping \
+        libboost-all-dev \
         libffi-dev \
         libssl-dev \
         man2html \
