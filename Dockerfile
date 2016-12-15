@@ -156,7 +156,7 @@ RUN echo "Starting main RUN section" && \
     update-locale && \
 
     # Remove unneeded packages
-    apt autoremove -y && \
+    apt-get purge apache2-bin apache2-data apache2-utils -y && \
 
     # Setup root user password
     echo 'root:123qwe' | chpasswd
