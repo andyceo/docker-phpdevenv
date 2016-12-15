@@ -24,8 +24,8 @@ ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.3.linux-amd64.tar.gz
-ENV PIP_PACKAGES "ansible-lint pymysql peewee"
-ENV PIP3_PACKAGES "pymysql peewee"
+ENV PIP_PACKAGES "ansible-lint pymysql python-telegram-bot peewee requests"
+ENV PIP3_PACKAGES "pymysql python-telegram-bot peewee requests"
 
 # Install all needed utilities
 RUN echo "Starting main RUN section" && \
@@ -156,7 +156,7 @@ RUN echo "Starting main RUN section" && \
     update-locale && \
 
     # Remove unneeded packages
-    apt autoremove && \
+    apt autoremove -y && \
 
     # Setup root user password
     echo 'root:123qwe' | chpasswd
