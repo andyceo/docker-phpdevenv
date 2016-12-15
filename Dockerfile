@@ -79,7 +79,6 @@ RUN echo "Starting main RUN section" && \
         nginx \
         openssh-server \
 
-        php5.5 `echo " $PHP_MODULES" | sed "s/ / php5.5-/g"` \
         php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
         php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
         php7.1 `echo " $PHP_MODULES71" | sed "s/ / php7.1-/g"` \
