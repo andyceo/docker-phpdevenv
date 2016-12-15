@@ -139,10 +139,10 @@ RUN echo "Starting main RUN section" && \
     apt-get update && apt-get install filebeat && \
 
     # Installing some packages with pip (see environment variable PIP_PACKAGES)
-    pip install `echo " $PIP_PACKAGES"` \
+    pip install `echo " $PIP_PACKAGES"` && \
 
     # Installing some packages with pip3 (see environment variable PIP3_PACKAGES)
-    pip install `echo " $PIP3_PACKAGES"` \
+    pip install `echo " $PIP3_PACKAGES"` && \
 
     # Installing Go binaries and add "/usr/local/go/bin" to the environment $PATH variable
     curl https://storage.googleapis.com/golang/$GO_ARCHIVE_FILENAME -LSso /usr/local/$GO_ARCHIVE_FILENAME && \
@@ -150,9 +150,13 @@ RUN echo "Starting main RUN section" && \
     rm /usr/local/$GO_ARCHIVE_FILENAME && \
     sed -i 's/^PATH="\(.*\)"$/PATH="\1:\/usr\/local\/go\/bin"/g' /etc/environment && \
 
+    # Set locale for RU
     locale-gen ru_RU && \
     locale-gen ru_RU.UTF-8 && \
     update-locale && \
+
+    # Remove unneeded packages
+    apt autoremove && \
 
     # Setup root user password
     echo 'root:123qwe' | chpasswd
