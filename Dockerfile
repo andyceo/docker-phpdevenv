@@ -24,6 +24,8 @@ ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.3.linux-amd64.tar.gz
+ENV PIP_PACKAGES "ansible-lint pymysql peewee"
+ENV PIP3_PACKAGES "pymysql peewee"
 
 # Install all needed utilities
 RUN echo "Starting main RUN section" && \
@@ -87,8 +89,9 @@ RUN echo "Starting main RUN section" && \
 
         pwgen \
         python-dev \
-        python-pip \
         python-pika \
+        python-pip \
+        python3-pip \
         redis-tools \
         rsync \
         screen \
@@ -136,8 +139,11 @@ RUN echo "Starting main RUN section" && \
     echo "deb https://packages.elastic.co/beats/apt stable main" |  tee -a /etc/apt/sources.list.d/beats.list && \
     apt-get update && apt-get install filebeat && \
 
-    # Installing ansible-lint with pip
-    pip install ansible-lint && \
+    # Installing some packages with pip (see environment variable PIP_PACKAGES)
+    pip install `echo " $PIP_PACKAGES"` \
+
+    # Installing some packages with pip3 (see environment variable PIP3_PACKAGES)
+    pip install `echo " $PIP3_PACKAGES"` \
 
     # Installing Go binaries and add "/usr/local/go/bin" to the environment $PATH variable
     curl https://storage.googleapis.com/golang/$GO_ARCHIVE_FILENAME -LSso /usr/local/$GO_ARCHIVE_FILENAME && \
