@@ -95,6 +95,7 @@ RUN echo "Starting main RUN section" && \
         rsync \
         screen \
         software-properties-common \
+        sqlite \
         supervisor \
         telnet \
         tmux \
