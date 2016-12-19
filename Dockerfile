@@ -48,9 +48,11 @@ RUN echo "Starting main RUN section" && \
     apt-get install -y \
         ansible \
         aptitude \
+        apt-transport-https \
         apt-utils \
         asr-manpages \
         build-essential \
+        ca-certificates \
         cmake \
         cron \
         curl \
@@ -96,6 +98,7 @@ RUN echo "Starting main RUN section" && \
         screen \
         software-properties-common \
         sqlite \
+        sqlite-doc \
         supervisor \
         telnet \
         tmux \
