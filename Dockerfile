@@ -10,7 +10,7 @@ FROM ubuntu:16.04
 MAINTAINER Andreev Andrey
 
 # Labels
-LABEL org.labelschema.description="This is the image with 4 PHP versions and basic developers tools. It can be used as lightweight virtual machine for developers." \
+LABEL org.labelschema.description="This is the image with several PHP versions (from official Ubuntu PPA), python libraries and other developers tools. It can be used as lightweight virtual machine for developers." \
       org.labelschema.docker.cmd="docker run --detach --name phpdevenv --restart always --hostname phpdevenv --net YOUR_CUSTOM_BRIDGE_NETWORK_NAME -p 40080:80 -p 40022:22 andyceo/phpdevenv:latest" \
       org.labelschema.name="phpdevenv" \
       org.labelschema.schema-version="1.0" \
@@ -23,12 +23,11 @@ LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname ph
 ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
-ENV GO_ARCHIVE_FILENAME go1.7.3.linux-amd64.tar.gz
+ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
 ENV PIP_PACKAGES "ansible-lint pymysql python-telegram-bot peewee requests"
 ENV PIP3_PACKAGES "pymysql python-telegram-bot peewee requests"
 
-# Install all needed utilities
-RUN echo "Starting main RUN section" && \
+RUN echo "Add all needed repositories (PPAs and others" && \
 
     # Add PPA repository for ansible
     echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" >> /etc/apt/sources.list && \
@@ -44,7 +43,9 @@ RUN echo "Starting main RUN section" && \
 
     # Prepare package manager for installing packages
     apt-get update && \
-    apt-get upgrade -y && \
+    apt-get upgrade -y
+
+RUN echo "Install all needed basic utilities and packages" && \
     apt-get install -y \
         ansible \
         aptitude \
@@ -80,14 +81,6 @@ RUN echo "Starting main RUN section" && \
         net-tools \
         nginx \
         openssh-server \
-
-        php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
-        php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
-        php7.1 `echo " $PHP_MODULES71" | sed "s/ / php7.1-/g"` \
-
-        php-pear \
-        phpunit \
-
         pwgen \
         python-dev \
         python-pika \
@@ -103,7 +96,15 @@ RUN echo "Starting main RUN section" && \
         telnet \
         tmux \
         ubuntu-standard \
-        wget && \
+        wget
+
+RUN echo "Install all needed utilities and packages" && \
+    apt-get install -y \
+        php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
+        php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
+        php7.1 `echo " $PHP_MODULES71" | sed "s/ / php7.1-/g"` \
+        php-pear \
+        phpunit && \
 
     apt-get purge apache2 -y && \
 
