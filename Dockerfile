@@ -147,7 +147,7 @@ RUN echo "Install all needed utilities and packages" && \
     pip install `echo " $PIP_PACKAGES"` && \
 
     # Installing some packages with pip3 (see environment variable PIP3_PACKAGES)
-    pip install `echo " $PIP3_PACKAGES"` && \
+    pip3 install `echo " $PIP3_PACKAGES"` && \
 
     # Installing Go binaries and add "/usr/local/go/bin" to the environment $PATH variable
     curl https://storage.googleapis.com/golang/$GO_ARCHIVE_FILENAME -LSso /usr/local/$GO_ARCHIVE_FILENAME && \
