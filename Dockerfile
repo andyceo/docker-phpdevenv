@@ -24,7 +24,7 @@ ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
-ENV PIP_PACKAGES "pika pymysql python-telegram-bot peewee requests"
+ENV PIP_PACKAGES "ansible-lint ipython[notebook] numpy pandas peewee pika pymysql python-telegram-bot requests scikit-learn scipy"
 
 RUN echo "Add all needed repositories (PPAs and others" && \
 
@@ -99,11 +99,11 @@ RUN echo "Install python packages" && \
         python-pip \
         python3-pip && \
 
-    # Installing packages for python2 with pip (see environment variable PIP_PACKAGES + ansible-lint)
-    pip install `echo " ansible-lint $PIP_PACKAGES"` && \
+    # Installing packages for python2 with pip (see environment variable PIP_PACKAGES)
+    pip install -q `echo " $PIP_PACKAGES"` && \
 
     # Installing packages for python3 with pip3 (see environment variable PIP_PACKAGES)
-    pip3 install `echo " $PIP_PACKAGES"`
+    pip3 install -q `echo " $PIP_PACKAGES"`
 
 RUN echo "Install all needed utilities and packages" && \
     apt-get install -yqq \
