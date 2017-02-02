@@ -24,8 +24,8 @@ ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
-ENV PIP_PACKAGES "ansible-lint pymysql python-telegram-bot peewee requests"
-ENV PIP3_PACKAGES "pymysql python-telegram-bot peewee requests"
+ENV PIP_PACKAGES "ansible-lint pika pymysql python-telegram-bot peewee requests"
+ENV PIP3_PACKAGES "pika pymysql python-telegram-bot peewee requests"
 
 RUN echo "Add all needed repositories (PPAs and others" && \
 
@@ -83,7 +83,6 @@ RUN echo "Install all needed basic utilities and packages" && \
         openssh-server \
         pwgen \
         python-dev \
-        python-pika \
         python-pip \
         python3-pip \
         redis-tools \
