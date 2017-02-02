@@ -24,7 +24,7 @@ ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
-ENV PIP_PACKAGES "ansible-lint ipython[notebook] numpy pandas peewee pika pymysql python-telegram-bot requests scikit-learn scipy"
+ENV PIP_PACKAGES "ansible-lint ipython[notebook] nose numpy pandas peewee pika pymysql python-telegram-bot requests scikit-learn scipy"
 
 RUN echo "Add all needed repositories (PPAs and others" && \
 
