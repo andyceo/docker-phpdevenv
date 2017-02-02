@@ -24,8 +24,7 @@ ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
 ENV PHP_MODULES71 "bcmath cli common curl fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
-ENV PIP_PACKAGES "ansible-lint pika pymysql python-telegram-bot peewee requests"
-ENV PIP3_PACKAGES "pika pymysql python-telegram-bot peewee requests"
+ENV PIP_PACKAGES "pika pymysql python-telegram-bot peewee requests"
 
 RUN echo "Add all needed repositories (PPAs and others" && \
 
@@ -46,7 +45,7 @@ RUN echo "Add all needed repositories (PPAs and others" && \
     apt-get upgrade -y
 
 RUN echo "Install all needed basic utilities and packages" && \
-    apt-get install -y \
+    apt-get install -yqq \
         ansible \
         aptitude \
         apt-transport-https \
@@ -82,9 +81,6 @@ RUN echo "Install all needed basic utilities and packages" && \
         nginx \
         openssh-server \
         pwgen \
-        python-dev \
-        python-pip \
-        python3-pip \
         redis-tools \
         rsync \
         screen \
@@ -97,8 +93,20 @@ RUN echo "Install all needed basic utilities and packages" && \
         ubuntu-standard \
         wget
 
+RUN echo "Install python packages" && \
+    apt-get install -yqq \
+        python-dev \
+        python-pip \
+        python3-pip && \
+
+    # Installing packages for python2 with pip (see environment variable PIP_PACKAGES + ansible-lint)
+    pip install `echo " ansible-lint $PIP_PACKAGES"` && \
+
+    # Installing packages for python3 with pip3 (see environment variable PIP_PACKAGES)
+    pip3 install `echo " $PIP_PACKAGES"`
+
 RUN echo "Install all needed utilities and packages" && \
-    apt-get install -y \
+    apt-get install -yqq \
         php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
         php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
         php7.1 `echo " $PHP_MODULES71" | sed "s/ / php7.1-/g"` \
@@ -141,12 +149,6 @@ RUN echo "Install all needed utilities and packages" && \
     curl https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
     echo "deb https://packages.elastic.co/beats/apt stable main" |  tee -a /etc/apt/sources.list.d/beats.list && \
     apt-get update && apt-get install filebeat && \
-
-    # Installing some packages with pip (see environment variable PIP_PACKAGES)
-    pip install `echo " $PIP_PACKAGES"` && \
-
-    # Installing some packages with pip3 (see environment variable PIP3_PACKAGES)
-    pip3 install `echo " $PIP3_PACKAGES"` && \
 
     # Installing Go binaries and add "/usr/local/go/bin" to the environment $PATH variable
     curl https://storage.googleapis.com/golang/$GO_ARCHIVE_FILENAME -LSso /usr/local/$GO_ARCHIVE_FILENAME && \
