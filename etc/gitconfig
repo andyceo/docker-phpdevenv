@@ -1,0 +1,57 @@
+[alias]
+  lg = log --graph --pretty=oneline --abbrev-commit
+  ci = commit
+  tagdate = log --date-order --graph --tags --simplify-by-decoration --pretty=format:'%ai %h %d'
+  co = checkout
+  lp = log -p
+  df = diff
+  who = shortlog -s --
+  tagdt = log --tags --simplify-by-decoration --pretty=format:'%ai %d'
+  dc = diff --cached
+  lt = log --color=always --pretty=format:'%h :: %cD, %Cblue%an%Creset: %Cgreen%s%Creset'
+  ls = log --stat
+  br = branch
+  apply = apply --index
+  st = status
+  ds = diff --staged
+
+[branch]
+  autosetuprebase = always
+
+[core]
+  ignorecase = false
+  safecrlf = false
+  excludesfile = ~/.gitignore
+  autocrlf = false
+  editor = mcedit
+
+[color]
+  status = true
+  diff = true
+  ui = true
+  branch = true
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = blue black bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[diff]
+  renames = copies
+
+[format]
+  pretty = "%n%n%nCommit:  %C(yellow)%H%nAuthor:  %C(green)%aN <%aE>%nDate:    (%C(red)%ar%Creset) %ai%nSubject: %s%b"
+
+[push]
+  default = simple
