@@ -82,12 +82,15 @@ RUN echo "Install all needed basic utilities and packages" && \
         manpages-dev \
         mc \
         mysql-client \
+        mysql-server \
         nano \
         net-tools \
         nginx \
         openssh-server \
         pkg-config \
         pwgen \
+        redis-server \
+        redis-sentinel \
         redis-tools \
         rsync \
         screen \
