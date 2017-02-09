@@ -21,8 +21,8 @@ LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname ph
 
 # Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
-ENV PHP_MODULES "amqp bcmath cli common curl dev fpm intl json ldap mbstring mcrypt mongodb mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
-ENV PHP_MODULES71    "bcmath cli common curl dev fpm intl json ldap mbstring mcrypt mongodb mysql opcache readline soap sybase xml zip"
+ENV PHP_MODULES "amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
+ENV PHP_MODULES71    "bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
 ENV PIP_PACKAGES "ansible-lint ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymysql python-telegram-bot requests scikit-learn scipy sympy"
 
