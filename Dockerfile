@@ -21,8 +21,7 @@ LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname ph
 
 # Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
-ENV PHP_MODULES "amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
-ENV PHP_MODULES71    "bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache readline soap sybase xml zip"
+ENV PHP_MODULES "amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
 ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
 ENV PIP_PACKAGES "ansible-lint ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymysql python-telegram-bot requests scikit-learn scipy sympy"
 
@@ -130,7 +129,7 @@ RUN echo "Install all needed utilities and packages" && \
     apt-get install -yqq \
         php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
         php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
-        php7.1 `echo " $PHP_MODULES71" | sed "s/ / php7.1-/g"` \
+        php7.1 `echo " $PHP_MODULES" | sed "s/ / php7.1-/g"` \
         php-pear \
         phpunit && \
 
