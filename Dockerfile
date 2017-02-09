@@ -101,6 +101,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         software-properties-common \
         sqlite \
         sqlite-doc \
+        sudo \
         supervisor \
         telnet \
         tmux \
