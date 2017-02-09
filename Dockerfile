@@ -65,6 +65,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         cmake \
         cron \
         curl \
+        debconf-utils \
         deb.torproject.org-keyring \
         default-jre \
         denyhosts \
@@ -87,7 +88,6 @@ RUN echo "Install all needed basic utilities and packages" && \
         mc \
         mongodb-org \
         mysql-client \
-        mysql-server \
         nano \
         net-tools \
         nginx \
@@ -108,6 +108,11 @@ RUN echo "Install all needed basic utilities and packages" && \
         tor \
         ubuntu-standard \
         wget
+
+RUN echo "Install mysql server with root user creation" && \
+    echo 'mysql-server mysql-server/root_password 123qwe' | debconf-set-selections && \
+    echo 'mysql-server mysql-server/root_password_again 123qwe' | debconf-set-selections && \
+    sudo apt-get install -yqq mysql-server
 
 RUN echo "Install python packages" && \
     apt-get install -yqq \
