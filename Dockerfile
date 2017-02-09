@@ -21,8 +21,8 @@ LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname ph
 
 # Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
-ENV PHP_MODULES "amqp bcmath cli common curl dev fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
-ENV PHP_MODULES71 "bcmath cli common curl dev fpm intl json ldap mbstring mcrypt mysql opcache readline soap sybase xml zip"
+ENV PHP_MODULES "amqp bcmath cli common curl dev fpm intl json ldap mbstring mcrypt mongodb mysql opcache readline soap sybase xml zip memcache redis imagick xdebug"
+ENV PHP_MODULES71    "bcmath cli common curl dev fpm intl json ldap mbstring mcrypt mongodb mysql opcache readline soap sybase xml zip"
 ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
 ENV PIP_PACKAGES "ansible-lint ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymysql python-telegram-bot requests scikit-learn scipy sympy"
 
@@ -44,6 +44,10 @@ RUN echo "Add all needed repositories (PPAs and others" && \
     # we install it later with apt-get install tor deb.torproject.org-keyring
     echo 'deb http://deb.torproject.org/torproject.org xenial main' > /etc/apt/sources.list.d/tor.list && \
     apt-key adv --keyserver keys.gnupg.net --recv-keys A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 && \
+
+    # Add key and repository for MongoDB
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && \
+    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" > /etc/apt/sources.list.d/mongodb.list && \
 
     # Prepare package manager for installing packages
     apt-get update && \
@@ -81,6 +85,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         manpages \
         manpages-dev \
         mc \
+        mongodb-org \
         mysql-client \
         mysql-server \
         nano \
