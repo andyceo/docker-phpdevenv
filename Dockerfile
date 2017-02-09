@@ -109,10 +109,10 @@ RUN echo "Install all needed basic utilities and packages" && \
         ubuntu-standard \
         wget
 
-RUN echo "Install mysql server with root user creation" && \
-    echo 'mysql-server mysql-server/root_password 123qwe' | debconf-set-selections && \
-    echo 'mysql-server mysql-server/root_password_again 123qwe' | debconf-set-selections && \
-    apt-get install -yqq mysql-server
+#RUN echo "Install mysql server with root user creation" && \
+#    echo 'mysql-server mysql-server-5.7/root_password password 123qwe' | debconf-set-selections && \
+#    echo 'mysql-server mysql-server-5.7/root_password_again password 123qwe' | debconf-set-selections && \
+#    apt-get install -yqq mysql-server-5.7
 
 RUN echo "Install python packages" && \
     apt-get install -yqq \
