@@ -23,7 +23,7 @@ LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname ph
 ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
 ENV GO_ARCHIVE_FILENAME go1.7.5.linux-amd64.tar.gz
-ENV PIP_PACKAGES "ansible-lint ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymysql python-telegram-bot requests scikit-learn scipy sympy"
+ENV PIP_PACKAGES "ansible-lint ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymysql python-telegram-bot requests scikit-learn scipy scrapy sympy"
 
 RUN echo "Add all needed repositories (PPAs and others" && \
 
