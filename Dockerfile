@@ -93,6 +93,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         nginx \
         openssh-server \
         pkg-config \
+        privoxy \
         pwgen \
         redis-server \
         redis-sentinel \
