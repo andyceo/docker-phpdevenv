@@ -86,6 +86,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         manpages \
         manpages-dev \
         mc \
+        memcached \
         mongodb-org \
         mysql-client \
         nano \
