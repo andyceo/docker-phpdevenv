@@ -55,6 +55,7 @@ RUN echo "Add all needed repositories (PPAs and others" && \
 
 RUN echo "Install all needed basic utilities and packages" && \
     apt-get install -yqq \
+        acl \
         ansible \
         aptitude \
         apt-transport-https \
