@@ -61,6 +61,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         apt-transport-https \
         apt-utils \
         asr-manpages \
+        bc \
         build-essential \
         ca-certificates \
         cmake \
