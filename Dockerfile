@@ -84,6 +84,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         libboost-all-dev \
         libffi-dev \
         libssl-dev \
+        locales \
         man2html \
         manpages \
         manpages-dev \
