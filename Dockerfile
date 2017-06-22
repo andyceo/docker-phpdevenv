@@ -26,14 +26,14 @@ ENV GO_ARCHIVE_FILENAME go1.8.linux-amd64.tar.gz
 ENV PIP_PACKAGES "ansible-lint autopager click fake-useragent flask ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymorphy2 pymysql pysocks python-telegram-bot requests scikit-learn scipy scrapely scrapy scrapy_fake_useragent scrapy_proxies stem sympy user-agents"
 ENV PYTHONIOENCODING "utf-8"
 
-RUN echo "Add all needed repositories (PPAs and others" && \
+RUN echo "Add all needed repositories (PPAs and others)" && \
 
     # Add PPA repository for ansible
-    echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" >> /etc/apt/sources.list && \
+    echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" >> /etc/apt/sources.list.d/ansible.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7BB9C367 && \
 
     # Add repository and repository key for nginx official repository
-    echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list && \
+    echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62 && \
 
     # Add repository and repository key for php PPA repository
