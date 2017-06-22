@@ -32,6 +32,10 @@ RUN echo "Add all needed repositories (PPAs and others)" && \
     echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" >> /etc/apt/sources.list.d/ansible.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7BB9C367 && \
 
+    # Add PPA repository for ethereum
+    echo "deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu xenial main" >> /etc/apt/sources.list.d/ethereum.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 923F6CA9 && \
+
     # Add repository and repository key for nginx official repository
     echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62 && \
