@@ -77,6 +77,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         denyhosts \
         dnsutils \
         drush \
+        ethereum \
         freebsd-manpages \
         funny-manpages \
         git \
