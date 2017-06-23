@@ -32,14 +32,6 @@ RUN echo "Add all needed repositories (PPAs and others)" && \
     echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" >> /etc/apt/sources.list.d/ansible.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7BB9C367 && \
 
-    # Add PPA repository for ethereum
-    echo "deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu xenial main" >> /etc/apt/sources.list.d/ethereum.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 923F6CA9 && \
-
-    # Add repository for zcash
-    wget -qO - https://apt.z.cash/zcash.asc | apt-key add - && \
-    echo "deb https://apt.z.cash/ jessie main" | tee /etc/apt/sources.list.d/zcash.list && \
-
     # Add repository and repository key for nginx official repository
     echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62 && \
@@ -81,7 +73,6 @@ RUN echo "Install all needed basic utilities and packages" && \
         denyhosts \
         dnsutils \
         drush \
-        ethereum \
         freebsd-manpages \
         funny-manpages \
         git \
@@ -122,8 +113,23 @@ RUN echo "Install all needed basic utilities and packages" && \
         tmux \
         tor \
         ubuntu-standard \
-        wget \
-        zcash
+        wget
+
+# Add cryptocurrencies
+
+RUN echo "Add cryptocurrencies repositories and nodes" && \
+    # Add PPA repository for ethereum
+    echo "deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu xenial main" >> /etc/apt/sources.list.d/ethereum.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 923F6CA9 && \
+
+    # Add repository for zcash
+    wget -qO - https://apt.z.cash/zcash.asc | apt-key add - && \
+    echo "deb https://apt.z.cash/ jessie main" | tee /etc/apt/sources.list.d/zcash.list && \
+
+    # Install cryptocurrencies nodes
+    apt-get install -yqq \
+      ethereum \
+      zcash
 
 #RUN echo "Install mysql server with root user creation" && \
 #    echo 'mysql-server mysql-server-5.7/root_password password 123qwe' | debconf-set-selections && \
