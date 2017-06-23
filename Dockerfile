@@ -127,6 +127,7 @@ RUN echo "Add cryptocurrencies repositories and nodes" && \
     echo "deb https://apt.z.cash/ jessie main" | tee /etc/apt/sources.list.d/zcash.list && \
 
     # Install cryptocurrencies nodes
+    apt-get update && \
     apt-get install -yqq \
       ethereum \
       zcash
