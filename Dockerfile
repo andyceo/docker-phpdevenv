@@ -153,7 +153,7 @@ RUN echo "Install python packages" && \
     # Installing packages for python3 with pip3 (see environment variable PIP_PACKAGES)
     pip3 install -q `echo " $PIP_PACKAGES"`
 
-RUN echo "Install all needed utilities and packages" && \
+RUN echo "Install all needed PHP utilities and packages" && \
     apt-get install -yqq \
         php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
         php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
@@ -203,6 +203,9 @@ RUN echo "Install all needed utilities and packages" && \
     tar -C /usr/local -xzf /usr/local/$GO_ARCHIVE_FILENAME && \
     rm /usr/local/$GO_ARCHIVE_FILENAME && \
     sed -i 's/^PATH="\(.*\)"$/PATH="\1:\/usr\/local\/go\/bin"/g' /etc/environment && \
+
+    # Finalize mongodb installation (changing storage, see etc/mongod.conf)
+    cp -al /var/lib/mongodb /root && \
 
     # Set locale for RU
     locale-gen ru_RU && \
