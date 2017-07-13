@@ -187,7 +187,7 @@ RUN echo "Install all needed PHP utilities and packages" && \
     curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept && \
     chmod a+x /usr/local/bin/codecept && \
 
-    # NodeJS 6.x
+    # NodeJS 6.x (LTS) and some popular modules
     curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g gulp && \
