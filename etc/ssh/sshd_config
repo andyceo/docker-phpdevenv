@@ -18,6 +18,7 @@ IgnoreRhosts yes
 RhostsRSAAuthentication no
 HostbasedAuthentication no
 PermitEmptyPasswords no
+PasswordAuthentication no
 ChallengeResponseAuthentication no
 X11Forwarding yes
 X11DisplayOffset 10
@@ -26,4 +27,4 @@ PrintLastLog yes
 TCPKeepAlive yes
 AcceptEnv LANG LC_*
 Subsystem sftp /usr/lib/openssh/sftp-server
-UsePAM yes
+UsePAM no

@@ -215,8 +215,8 @@ RUN echo "Install all needed PHP utilities and packages" && \
     # Remove unneeded packages
     apt-get purge apache2-bin apache2-data apache2-utils -y && \
 
-    # Setup root user password
-    echo 'root:123qwe' | chpasswd
+    # Setup root user password to random password
+    cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c20 | (echo -n "root:" && cat) | chpasswd
 
 # We also must create directories for privelege separation for sshd: /var/run/sshd, and /var/run/php for php.
 # We do so in entrypoint.sh, because /var/run can be mounted at temporary filesystem.
