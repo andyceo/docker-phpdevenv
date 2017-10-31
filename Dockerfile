@@ -112,7 +112,8 @@ RUN echo "Install all needed basic utilities and packages" && \
         telnet \
         tmux \
         tor \
-        ubuntu-standard \
+        # Package ubuntu-standard recommends plymouth package, that seems to be broken at the moment. So temporary disable it. And add @todo to further remove it or enable it back when it will be resolved.
+#        ubuntu-standard \
         wget
 
 # Add cryptocurrencies
