@@ -26,6 +26,10 @@ ENV GO_ARCHIVE_FILENAME go1.9.2.linux-amd64.tar.gz
 ENV PIP_PACKAGES "ansible-lint autopager click fake-useragent flask jsonpatch influxdb ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymorphy2 pymysql pysocks python-telegram-bot requests scikit-learn scipy scrapely scrapy scrapy_fake_useragent scrapy_proxies stem sympy tabulate user-agents"
 ENV PYTHONIOENCODING "utf-8"
 
+RUN echo "Prepare package manager for installing packages and add support for https protocol in apt manager" && \
+    apt-get update && apt-get upgrade -yqq && \
+    apt-get install -yqq aptitude apt-utils apt-transport-https ca-certificates openssl
+
 RUN echo "Add all needed repositories (PPAs and others)" && \
 
     # Add PPA repository for ansible
@@ -61,13 +65,9 @@ RUN echo "Install all needed basic utilities and packages" && \
     apt-get install -yqq \
         acl \
         ansible \
-        aptitude \
-        apt-transport-https \
-        apt-utils \
         asr-manpages \
         bc \
         build-essential \
-        ca-certificates \
         cmake \
         cron \
         curl \
