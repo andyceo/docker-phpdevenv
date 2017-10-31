@@ -49,6 +49,10 @@ RUN echo "Add all needed repositories (PPAs and others)" && \
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && \
     echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" > /etc/apt/sources.list.d/mongodb.list && \
 
+    # Install sbt repository (For Scala)
+    echo "deb https://dl.bintray.com/sbt/debian /" > /etc/apt/sources.list.d/sbt.list && \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
+
     # Prepare package manager for installing packages
     apt-get update && \
     apt-get upgrade -y
@@ -103,6 +107,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         redis-sentinel \
         redis-tools \
         rsync \
+        sbt \
         screen \
         software-properties-common \
         sqlite \
