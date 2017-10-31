@@ -99,6 +99,8 @@ RUN echo "Install all needed basic utilities and packages" && \
         nano \
         net-tools \
         nginx \
+        openjdk-8-source \
+        openjdk-9-source \
         openssh-server \
         pkg-config \
         privoxy \
