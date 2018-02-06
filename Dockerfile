@@ -232,6 +232,12 @@ RUN echo "Install all needed PHP utilities and packages" && \
 # Copy application configs
 COPY etc /etc
 
+# Create user directories for database storage and custom configuration
+RUN mkdir /root/rootdirectories /root/databases
+
+# Add symlinker.sh script
+ADD https://raw.githubusercontent.com/andyceo/bash_scripts/master/symlinker.sh /
+
 # Copy entrypoint to container
 COPY entrypoint.sh /entrypoint.sh
 

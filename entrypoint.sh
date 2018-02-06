@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+ROOTDIRECTORIES=${ROOTDIRECTORIES:-/root/rootdirectories}
+
+/symlinker.sh $ROOTDIRECTORIES
 
 set -e
 
