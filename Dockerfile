@@ -110,6 +110,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         rsync \
         sbt \
         screen \
+        shellcheck \
         software-properties-common \
         sqlite \
         sqlite-doc \
