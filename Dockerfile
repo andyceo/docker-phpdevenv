@@ -22,7 +22,7 @@ LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname ph
 # Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
-ENV GO_ARCHIVE_FILENAME go1.9.4.linux-amd64.tar.gz
+ENV GO_ARCHIVE_FILENAME go1.10.linux-amd64.tar.gz
 ENV PIP_PACKAGES "ansible-lint autopager click fake-useragent flask jsonpatch influxdb ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymorphy2 pymysql pysocks python-telegram-bot requests scikit-learn scipy scrapely scrapy scrapy_fake_useragent scrapy_proxies stem sympy tabulate telethon user-agents"
 ENV PYTHONIOENCODING "utf-8"
 
