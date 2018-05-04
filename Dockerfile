@@ -147,6 +147,7 @@ RUN echo "Add cryptocurrencies repositories and nodes" && \
 
 RUN echo "Install python packages" && \
     apt-get install -yqq \
+        pylint \
         python-dev \
         python-pip \
         python3-pip && \
