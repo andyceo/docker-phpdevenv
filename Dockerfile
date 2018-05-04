@@ -149,11 +149,13 @@ RUN echo "Install python packages" && \
     apt-get install -yqq \
         pylint \
         python-dev \
-        python-pip \
-        python3-pip && \
+        python-pip && \
 
     # Upgrade pip with pip
     pip install -q --upgrade pip && \
+
+    # We should install and update pip3 after upgrading pip, see https://stackoverflow.com/questions/49836676/python-pip3-cannot-import-name-main
+    apt-get install -yqq python3-pip && \
     pip3 install -q --upgrade pip && \
 
     # Installing packages for python2 with pip (see environment variable PIP_PACKAGES)
