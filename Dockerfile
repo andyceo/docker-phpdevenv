@@ -114,6 +114,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         software-properties-common \
         sqlite \
         sqlite-doc \
+        stress \
         sudo \
         supervisor \
         telnet \
