@@ -98,6 +98,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         mysql-client \
         nano \
         net-tools \
+        netcat \
         nginx \
         openjdk-8-source \
         openssh-server \
