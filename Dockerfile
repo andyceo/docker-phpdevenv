@@ -150,21 +150,12 @@ RUN echo "Add cryptocurrencies repositories and nodes" && \
 RUN echo "Install python packages" && \
     apt-get install -yqq \
         pylint \
-        python-dev \
-        python-pip && \
+        python3-dev \
+        python3-pip && \
+    pip3 install -q --upgrade pip
 
-    # Upgrade pip with pip
-    pip install -q --upgrade pip && \
-
-    # We should install and update pip3 after upgrading pip, see https://stackoverflow.com/questions/49836676/python-pip3-cannot-import-name-main
-    apt-get install -yqq python3-pip && \
-    pip3 install -q --upgrade pip && \
-
-    # Installing packages for python2 with pip (see environment variable PIP_PACKAGES)
-    pip install -q `echo " $PIP_PACKAGES"` && \
-
-    # Installing packages for python3 with pip3 (see environment variable PIP_PACKAGES)
-    pip3 install -q `echo " $PIP_PACKAGES"`
+# Installing packages for python3 with pip3 (see environment variable PIP_PACKAGES)
+RUN pip3 install -q `echo " $PIP_PACKAGES"`
 
 RUN echo "Install all needed PHP utilities and packages" && \
     apt-get install -yqq \
