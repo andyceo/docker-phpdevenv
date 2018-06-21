@@ -19,7 +19,7 @@ LABEL org.labelschema.description="This is the image with several PHP versions (
 # Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
-ENV GO_ARCHIVE_FILENAME go1.10.linux-amd64.tar.gz
+ENV GO_ARCHIVE_FILENAME go1.10.3.linux-amd64.tar.gz
 ENV PIP_PACKAGES "ansible-lint autopager click fake-useragent flask jsonpatch influxdb ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymorphy2 pymysql pysocks python-telegram-bot requests scikit-learn scipy scrapely scrapy scrapy_fake_useragent scrapy_proxies stem sympy tabulate telethon user-agents"
 ENV PYTHONIOENCODING "utf-8"
 
@@ -200,7 +200,7 @@ RUN echo "Install all needed PHP utilities and packages" && \
     apt-get update && apt-get install filebeat && \
 
     # Installing Go binaries and add "/usr/local/go/bin" to the environment $PATH variable
-    curl https://storage.googleapis.com/golang/$GO_ARCHIVE_FILENAME -LSso /usr/local/$GO_ARCHIVE_FILENAME && \
+    curl https://dl.google.com/go/$GO_ARCHIVE_FILENAME -LSso /usr/local/$GO_ARCHIVE_FILENAME && \
     tar -C /usr/local -xzf /usr/local/$GO_ARCHIVE_FILENAME && \
     rm /usr/local/$GO_ARCHIVE_FILENAME && \
     sed -i 's/^PATH="\(.*\)"$/PATH="\1:\/usr\/local\/go\/bin"/g' /etc/environment && \
