@@ -16,7 +16,7 @@ LABEL org.labelschema.description="This is the image with several PHP versions (
       maintainer="Andrey Andreev <andyceo@yandex.ru> (@andyceo)" \
       run="/usr/bin/docker run -d --name phpdevenv --restart always --hostname phpdevenv --net docknet -p 80:80 -p 22:22 ${IMAGE}"
 
-# Set neccessary environment variables and declare variables for installing popular PHP extensions
+# Set neccessary environment variables and declare variables for installing popular Python and PHP extensions
 ENV TERM xterm
 ENV PHP_MODULES "amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
 ENV GO_ARCHIVE_FILENAME go1.10.3.linux-amd64.tar.gz
@@ -189,7 +189,7 @@ RUN echo "Install all needed PHP utilities and packages" && \
     chmod a+x /usr/local/bin/codecept && \
 
     # NodeJS 8.x (will be LTS from October, 2017 approximately) and some popular modules
-    curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g gulp && \
     npm install -g bower && \
