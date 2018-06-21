@@ -6,18 +6,15 @@
 # Set the base image to Ubuntu
 FROM ubuntu:16.04
 
-# File Author / Maintainer
-MAINTAINER Andreev Andrey
-
 # Labels
 LABEL org.labelschema.description="This is the image with several PHP versions (from official Ubuntu PPA), python libraries and other developers tools. It can be used as lightweight virtual machine for developers." \
       org.labelschema.docker.cmd="docker run --detach --name phpdevenv --restart always --hostname phpdevenv --net YOUR_CUSTOM_BRIDGE_NETWORK_NAME -p 40080:80 -p 40022:22 andyceo/phpdevenv:latest" \
       org.labelschema.name="phpdevenv" \
       org.labelschema.schema-version="1.0" \
       org.labelschema.vcs-url="https://github.com/andyceo/docker-phpdevenv" \
-      org.labelschema.vendor="Ruware"
-
-LABEL RUN /usr/bin/docker run -d --name phpdevenv --restart always --hostname phpdevenv --net docknet -p "80:80" -p "22:22" \${IMAGE}
+      org.labelschema.vendor="Ruware" \
+      maintainer="Andrey Andreev <andyceo@yandex.ru> (@andyceo)" \
+      run="/usr/bin/docker run -d --name phpdevenv --restart always --hostname phpdevenv --net docknet -p 80:80 -p 22:22 ${IMAGE}"
 
 # Set neccessary environment variables and declare variables for installing popular PHP extensions
 ENV TERM xterm
