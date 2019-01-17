@@ -43,7 +43,7 @@ RUN echo "Add all needed repositories (PPAs and others)" && \
 
     # Add repository and repository key for tor official repository
     # we install it later with apt-get install tor deb.torproject.org-keyring
-    echo 'deb http://deb.torproject.org/torproject.org xenial main' > /etc/apt/sources.list.d/tor.list && \
+    echo 'deb https://deb.torproject.org/torproject.org xenial main' > /etc/apt/sources.list.d/tor.list && \
     apt-key adv --keyserver keys.gnupg.net --recv-keys A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 && \
 
     # Add key and repository for MongoDB
