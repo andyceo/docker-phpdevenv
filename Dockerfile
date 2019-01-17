@@ -122,6 +122,15 @@ RUN echo "Install all needed basic utilities and packages" && \
 #        ubuntu-standard \
         wget
 
+RUN echo "Install all LaTeX utilities and packages" && \
+    apt-get install -yqq \
+        texlive-latex-base \
+        texlive-binaries \
+        texlive-fonts-recommended \
+        latex-xcolor \
+        texlive-latex-extra \
+        cm-super
+
 # Add cryptocurrencies
 
 RUN echo "Add cryptocurrencies repositories and nodes" && \
