@@ -2,7 +2,7 @@
 
 ROOTDIRECTORIES=${ROOTDIRECTORIES:-/root/rootdirectories}
 
-/symlinker.sh $ROOTDIRECTORIES
+rsync -ahvz --stats $ROOTDIRECTORIES /
 
 set -e
 

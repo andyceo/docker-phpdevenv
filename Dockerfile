@@ -238,7 +238,10 @@ COPY etc /etc
 RUN mkdir /root/rootdirectories /root/databases
 
 # Add symlinker.sh script
-ADD https://raw.githubusercontent.com/andyceo/bash_scripts/master/symlinker.sh /
+ADD https://raw.githubusercontent.com/andyceo/bash_scripts/master/symlinker.sh /usr/local/bin
+
+# Add rsyncdir.sh script
+ADD https://raw.githubusercontent.com/andyceo/bash_scripts/master/rsyncdir/rsyncdir.sh /usr/local/bin
 
 # Copy entrypoint to container
 COPY entrypoint.sh /entrypoint.sh
