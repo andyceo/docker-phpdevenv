@@ -250,3 +250,6 @@ COPY entrypoint.sh /entrypoint.sh
 EXPOSE 22 80
 
 ENTRYPOINT ["/entrypoint.sh"]
+
+HEALTHCHECK --interval=5m --timeout=5s --start-period=30s --retries=5 \
+  CMD supervisorctl status || exit 1
