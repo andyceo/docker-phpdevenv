@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ROOTDIRECTORIES=${ROOTDIRECTORIES:-/root/rootdirectories}
+ROOTDIRECTORIES=${ROOTDIRECTORIES:-/root/rootdirectories/}
 
 rsync -ahvz --stats $ROOTDIRECTORIES /
 
