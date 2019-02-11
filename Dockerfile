@@ -125,8 +125,14 @@ RUN echo "Install all needed basic utilities and packages" && \
 
 RUN echo "Install all LaTeX utilities and packages" && \
     apt-get install -yqq \
-        texlive-full \
-        latex-xcolor
+        cm-super \
+        latex-xcolor \
+        texlive-latex-base \
+        texlive-binaries \
+        texlive-fonts-recommended \
+        texlive-science \
+        texlive-latex-extra \
+        texlive-full
 
 # Add cryptocurrencies
 
