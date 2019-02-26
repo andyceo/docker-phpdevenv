@@ -201,7 +201,7 @@ RUN echo "Install all needed PHP utilities and packages" && \
     curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept && \
     chmod a+x /usr/local/bin/codecept && \
 
-    # NodeJS 8.x (will be LTS from October, 2017 approximately) and some popular modules
+    # NodeJS and some popular modules
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g gulp && \
