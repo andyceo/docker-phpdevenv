@@ -62,6 +62,7 @@ RUN echo "Install all needed basic utilities and packages" && \
     apt-get install -yqq \
         acl \
         ansible \
+        apache2 \
         apache2-utils \
         asr-manpages \
         bc \
@@ -123,6 +124,9 @@ RUN echo "Install all needed basic utilities and packages" && \
         # Package ubuntu-standard recommends plymouth package, that seems to be broken at the moment. So temporary disable it. And add @todo to further remove it or enable it back when it will be resolved.
 #        ubuntu-standard \
         wget
+
+RUN echo "Install Apache 2 on non-standard port" && \
+    sed -i -e 's/80/81/g' /etc/apache2/ports.conf
 
 RUN echo "Install all LaTeX utilities and packages" && \
     apt-get install -yqq \
@@ -225,9 +229,6 @@ RUN echo "Install all needed PHP utilities and packages" && \
     locale-gen ru_RU && \
     locale-gen ru_RU.UTF-8 && \
     update-locale && \
-
-    # Remove unneeded packages
-    apt-get purge apache2-bin apache2-data -y && \
 
     # Setup root user password to random password
     cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c20 | (echo -n "root:" && cat) | chpasswd
