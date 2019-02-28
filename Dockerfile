@@ -45,7 +45,7 @@ RUN echo "Add all needed repositories (PPAs and others)" && \
     # @see https://www.torproject.org/docs/debian.html.en
     # we install it later with apt-get install tor deb.torproject.org-keyring
     echo 'deb https://deb.torproject.org/torproject.org xenial main' > /etc/apt/sources.list.d/tor.list && \
-    curl -L https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo apt-key add - && \
+    curl -s https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | tac | tac | sudo apt-key add - && \
 
     # Add key and repository for MongoDB
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && \
