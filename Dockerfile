@@ -25,7 +25,7 @@ ENV PYTHONIOENCODING "utf-8"
 
 RUN echo "Prepare package manager for installing packages and add support for https protocol in apt manager" && \
     apt-get update && apt-get upgrade -yqq && \
-    apt-get install -yqq aptitude apt-utils apt-transport-https ca-certificates openssl
+    apt-get install -yqq aptitude apt-utils apt-transport-https ca-certificates curl openssl
 
 RUN echo "Add all needed repositories (PPAs and others)" && \
 
@@ -70,7 +70,6 @@ RUN echo "Install all needed basic utilities and packages" && \
         build-essential \
         cmake \
         cron \
-        curl \
         debconf-utils \
         deb.torproject.org-keyring \
         default-jre \
