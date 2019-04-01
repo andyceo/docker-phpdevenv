@@ -1,6 +1,6 @@
 ##################################################################
 # Dockerfile to build environment for php developer (LEP stack)  #
-# Based on Ubuntu 16.04                                          #
+# Based on Ubuntu 18.04                                          #
 ##################################################################
 
 # Set the base image to Ubuntu
@@ -25,7 +25,7 @@ ENV PYTHONIOENCODING "utf-8"
 
 RUN echo "Prepare package manager for installing packages and add support for https protocol in apt manager" && \
     apt-get update && apt-get upgrade -yqq && \
-    apt-get install -yqq aptitude apt-utils apt-transport-https ca-certificates curl openssl
+    apt-get install -yqq aptitude apt-utils apt-transport-https ca-certificates curl gnupg2 openssl
 
 RUN echo "Add all needed repositories (PPAs and others)" && \
 
