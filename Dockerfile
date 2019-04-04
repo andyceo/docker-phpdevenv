@@ -65,7 +65,6 @@ RUN echo "Install all needed basic utilities and packages" && \
         ansible \
         apache2 \
         apache2-utils \
-        asr-manpages \
         bc \
         build-essential \
         cmake \
@@ -77,7 +76,6 @@ RUN echo "Install all needed basic utilities and packages" && \
         dnsutils \
         drush \
         freebsd-manpages \
-        funny-manpages \
         git \
         gmt-common \
         htop \
@@ -121,8 +119,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         telnet \
         tmux \
         tor \
-        # Package ubuntu-standard recommends plymouth package, that seems to be broken at the moment. So temporary disable it. And add @todo to further remove it or enable it back when it will be resolved.
-#        ubuntu-standard \
+        ubuntu-standard \
         wget
 
 RUN echo "Install Apache 2 on non-standard port" && \
