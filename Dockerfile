@@ -74,7 +74,6 @@ RUN echo "Install all needed basic utilities and packages" && \
         default-jre \
         denyhosts \
         dnsutils \
-        drush \
         freebsd-manpages \
         git \
         gmt-common \
