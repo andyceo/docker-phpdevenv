@@ -84,42 +84,42 @@ RUN echo "Install all needed basic utilities and packages" && \
         libboost-all-dev \
         libffi-dev \
         libssl-dev \
-        locales \
-        man2html \
-        manpages \
-        manpages-dev \
-        mc \
-        memcached \
-        mongodb-org \
-        mysql-client \
-        nano \
-        net-tools \
-        netcat \
-        nginx \
-        nmap \
-        openjdk-8-source \
-        openssh-server \
-        pkg-config \
-        privoxy \
-        pwgen \
-        redis-server \
-        redis-sentinel \
-        redis-tools \
-        rsync \
-        sbt \
-        screen \
-        shellcheck \
-        software-properties-common \
-        sqlite \
-        sqlite-doc \
-        stress \
-        sudo \
-        supervisor \
-        telnet \
-        tmux \
-        tor \
-        ubuntu-standard \
-        wget
+        locales
+#        man2html \
+#        manpages \
+#        manpages-dev \
+#        mc \
+#        memcached \
+#        mongodb-org \
+#        mysql-client \
+#        nano \
+#        net-tools \
+#        netcat \
+#        nginx \
+#        nmap \
+#        openjdk-8-source \
+#        openssh-server \
+#        pkg-config \
+#        privoxy \
+#        pwgen \
+#        redis-server \
+#        redis-sentinel \
+#        redis-tools \
+#        rsync \
+#        sbt \
+#        screen \
+#        shellcheck \
+#        software-properties-common \
+#        sqlite \
+#        sqlite-doc \
+#        stress \
+#        sudo \
+#        supervisor \
+#        telnet \
+#        tmux \
+#        tor \
+#        ubuntu-standard \
+#        wget
 
 RUN echo "Install Apache 2 on non-standard port" && \
     sed -i -e 's/80/81/g' /etc/apache2/ports.conf
