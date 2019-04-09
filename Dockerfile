@@ -84,7 +84,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         libboost-all-dev \
         libffi-dev \
         libssl-dev \
-        locales
+        locales \
         man2html \
         manpages \
         manpages-dev \
@@ -105,7 +105,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         redis-server \
         redis-sentinel \
         redis-tools \
-        rsync \
+        rsync
 #        sbt \
 #        screen \
 #        shellcheck \
