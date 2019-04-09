@@ -105,16 +105,16 @@ RUN echo "Install all needed basic utilities and packages" && \
         redis-server \
         redis-sentinel \
         redis-tools \
-        rsync
-#        sbt \
-#        screen \
-#        shellcheck \
-#        software-properties-common \
-#        sqlite \
-#        sqlite-doc \
-#        stress \
-#        sudo \
-#        supervisor \
+        rsync \
+        sbt \
+        screen \
+        shellcheck \
+        software-properties-common \
+        sqlite \
+        sqlite-doc \
+        stress \
+        sudo \
+        supervisor
 #        telnet \
 #        tmux \
 #        tor \
