@@ -199,8 +199,9 @@ RUN echo "Install all needed PHP utilities and packages" && \
 
     # Codeception
     curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept && \
-    chmod a+x /usr/local/bin/codecept && \
+    chmod a+x /usr/local/bin/codecept
 
+RUN echo "Finalize all other packages install" && \
     # NodeJS and some popular modules
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs && \
