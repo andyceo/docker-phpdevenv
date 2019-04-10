@@ -140,6 +140,10 @@ RUN echo "Install all LaTeX utilities and packages" && \
 # Add cryptocurrencies
 
 RUN echo "Add cryptocurrencies repositories and nodes" && \
+    # Add PPA repository for bitcoin
+    echo "deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu bionic main" >> /etc/apt/sources.list.d/bitcoin.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C70EF1F0305A1ADB9986DBD8D46F45428842CE5E && \
+
     # Add PPA repository for ethereum
     echo "deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu bionic main" >> /etc/apt/sources.list.d/ethereum.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 923F6CA9 && \
@@ -151,6 +155,7 @@ RUN echo "Add cryptocurrencies repositories and nodes" && \
     # Install cryptocurrencies nodes
     apt-get update && \
     apt-get install -yqq \
+      bitcoind \
       ethereum \
       zcash
 
