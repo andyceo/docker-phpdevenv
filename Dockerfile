@@ -49,7 +49,7 @@ RUN echo "Add all needed repositories (PPAs and others)" && \
 
     # Add key and repository for MongoDB
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 && \
-    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.1 multiverse" > /etc/apt/sources.list.d/mongodb.list && \
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.1 multiverse" > /etc/apt/sources.list.d/mongodb.list && \
 
     # Install sbt repository (For Scala)
     echo "deb https://dl.bintray.com/sbt/debian /" > /etc/apt/sources.list.d/sbt.list && \
