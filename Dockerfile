@@ -177,8 +177,6 @@ RUN echo "Install all needed PHP utilities and packages" && \
         php-pear \
         phpunit && \
 
-    apt-get purge apache2 -y && \
-
     apt-get clean && rm -rf /tmp/* /var/tmp/* && \
     rm /etc/alternatives/php && ln -s /usr/bin/php7.1 /etc/alternatives/php && \
 
