@@ -30,26 +30,26 @@ RUN echo "Prepare package manager for installing packages and add support for ht
 RUN echo "Add all needed repositories (PPAs and others)" && \
 
     # Add PPA repository for ansible
-    echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" >> /etc/apt/sources.list.d/ansible.list && \
+    echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu bionic main" >> /etc/apt/sources.list.d/ansible.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7BB9C367 && \
 
     # Add repository and repository key for nginx official repository
-    echo "deb http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list.d/nginx.list && \
+    echo "deb http://nginx.org/packages/ubuntu/ bionic nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62 && \
 
     # Add repository and repository key for php PPA repository
-    echo 'deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main' > /etc/apt/sources.list.d/php.list && \
+    echo 'deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main' > /etc/apt/sources.list.d/php.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
 
     # Add repository and repository key for tor official repository
     # @see https://www.torproject.org/docs/debian.html.en
     # we install it later with apt-get install tor deb.torproject.org-keyring
-    echo 'deb https://deb.torproject.org/torproject.org xenial main' > /etc/apt/sources.list.d/tor.list && \
+    echo 'deb https://deb.torproject.org/torproject.org bionic main' > /etc/apt/sources.list.d/tor.list && \
     curl -s https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | tac | tac | apt-key add - && \
 
     # Add key and repository for MongoDB
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && \
-    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" > /etc/apt/sources.list.d/mongodb.list && \
+    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.1 multiverse" > /etc/apt/sources.list.d/mongodb.list && \
 
     # Install sbt repository (For Scala)
     echo "deb https://dl.bintray.com/sbt/debian /" > /etc/apt/sources.list.d/sbt.list && \
@@ -117,9 +117,9 @@ RUN echo "Install all needed basic utilities and packages" && \
         supervisor \
         telnet \
         tmux \
-        tor
-#        ubuntu-standard \
-#        wget
+        tor \
+        ubuntu-standard \
+        wget
 
 RUN echo "Install Apache 2 on non-standard port" && \
     sed -i -e 's/80/81/g' /etc/apache2/ports.conf
@@ -141,7 +141,7 @@ RUN echo "Install all LaTeX utilities and packages" && \
 
 RUN echo "Add cryptocurrencies repositories and nodes" && \
     # Add PPA repository for ethereum
-    echo "deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu xenial main" >> /etc/apt/sources.list.d/ethereum.list && \
+    echo "deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu bionic main" >> /etc/apt/sources.list.d/ethereum.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 923F6CA9 && \
 
     # Add repository for zcash
