@@ -114,10 +114,10 @@ RUN echo "Install all needed basic utilities and packages" && \
         sqlite-doc \
         stress \
         sudo \
-        supervisor
-#        telnet \
-#        tmux \
-#        tor \
+        supervisor \
+        telnet \
+        tmux \
+        tor
 #        ubuntu-standard \
 #        wget
 
