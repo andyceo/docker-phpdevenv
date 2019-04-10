@@ -48,7 +48,7 @@ RUN echo "Add all needed repositories (PPAs and others)" && \
     curl -s https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | tac | tac | apt-key add - && \
 
     # Add key and repository for MongoDB
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 && \
     echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.1 multiverse" > /etc/apt/sources.list.d/mongodb.list && \
 
     # Install sbt repository (For Scala)
