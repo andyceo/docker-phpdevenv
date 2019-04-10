@@ -127,12 +127,14 @@ RUN echo "Install Apache 2 on non-standard port" && \
 RUN echo "Install all LaTeX utilities and packages" && \
     apt-get install -yqq \
         cm-super \
-        latex-xcolor \
-        texlive-latex-base \
+        texlive \
+        texlive-base \
         texlive-binaries \
         texlive-fonts-recommended \
         texlive-science \
+        texlive-latex-base \
         texlive-latex-extra \
+        texlive-latex-recommended \
         texlive-full
 
 # Add cryptocurrencies
