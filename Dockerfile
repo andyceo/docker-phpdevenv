@@ -18,11 +18,11 @@ LABEL org.labelschema.description="This is the image with several PHP versions (
 
 # Set neccessary environment variables and declare variables for installing popular Python and PHP extensions
 ENV DEBIAN_FRONTEND="noninteractive"
-    TERM="xterm"
-    PHP_MODULES="amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
-    GO_ARCHIVE_FILENAME="go1.12.4.linux-amd64.tar.gz"
-    PIP_PACKAGES="ansible-lint autopager click fake-useragent flask jsonpatch influxdb ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymorphy2 pymysql pysocks python-telegram-bot requests scikit-learn scipy scrapely scrapy scrapy_fake_useragent scrapy_proxies stem sympy tabulate telethon user-agents"
-    PYTHONIOENCODING="utf-8"
+ENV TERM="xterm"
+ENV PHP_MODULES="amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
+ENV GO_ARCHIVE_FILENAME="go1.12.4.linux-amd64.tar.gz"
+ENV PIP_PACKAGES="ansible-lint autopager click fake-useragent flask jsonpatch influxdb ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymorphy2 pymysql pysocks python-telegram-bot requests scikit-learn scipy scrapely scrapy scrapy_fake_useragent scrapy_proxies stem sympy tabulate telethon user-agents"
+ENV PYTHONIOENCODING="utf-8"
 
 RUN echo "Prepare package manager for installing packages and add support for https protocol in apt manager" && \
     apt-get update && apt-get upgrade -yqq && \
