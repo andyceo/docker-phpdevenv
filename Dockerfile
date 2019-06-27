@@ -228,9 +228,9 @@ RUN echo "Finalize all other packages install" && \
     # Finalize mongodb installation (changing storage, see etc/mongod.conf)
     cp -al /var/lib/mongodb /root && \
 
-    # Set locale for RU
-    locale-gen ru_RU && \
-    locale-gen ru_RU.UTF-8 && \
+    # Set locale for US and RU
+    locale-gen en_US en_US.UTF-8 && \
+    locale-gen ru_RU ru_RU.UTF-8 && \
     update-locale && \
 
     # Setup root user password to random password
