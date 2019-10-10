@@ -21,7 +21,6 @@ ENV DEBIAN_FRONTEND="noninteractive"
 ENV TERM="xterm"
 ENV PHP_MODULES="amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
 ENV GO_ARCHIVE_FILENAME="go1.13.1.linux-amd64.tar.gz"
-ENV PIP_PACKAGES="ansible-lint autopager click fake-useragent flask jsonpatch influxdb ipython[notebook] matplotlib mongoengine nose numpy pandas peewee pika pymorphy2 pymysql pysocks python-telegram-bot requests scikit-learn scipy scrapely scrapy scrapy_fake_useragent scrapy_proxies stem sympy tabulate telethon user-agents"
 ENV PYTHONIOENCODING="utf-8"
 
 RUN echo "Prepare package manager for installing packages and add support for https protocol in apt manager" && \
@@ -172,8 +171,10 @@ RUN echo "Install python packages" && \
         python3-pip && \
     pip3 install -q --upgrade pip
 
-# Installing packages for python3 with pip3 (see environment variable PIP_PACKAGES)
-RUN pip3 install -q `echo " $PIP_PACKAGES"`
+# Installing packages for python3 with pip3
+COPY python-requirements.txt /tmp
+RUN pip3 install -r /tmp/python-requirements.txt && \
+    rm /tmp/python-requirements.txt
 
 RUN echo "Install all needed PHP utilities and packages" && \
     apt-get install -yqq \
