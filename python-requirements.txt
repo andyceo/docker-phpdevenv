@@ -1,6 +1,7 @@
 ansible-lint
 ansicolors
 autopager
+catboost
 click
 deepmerge
 docker
