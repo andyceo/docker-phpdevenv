@@ -8,8 +8,10 @@ environs
 fake-useragent
 flask
 jsonpatch
+jupyter
+jupyterlab
 influxdb
-ipython[notebook]
+ipywidgets
 matplotlib
 mongoengine
 nose
