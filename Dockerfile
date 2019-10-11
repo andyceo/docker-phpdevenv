@@ -173,7 +173,8 @@ RUN echo "Install python packages" && \
 
 # Installing packages for python3 with pip3
 COPY python-requirements.txt /tmp
-RUN pip3 install -r /tmp/python-requirements.txt && \
+RUN apt-get install -yqq libgmp3-dev && \
+    pip3 install -r /tmp/python-requirements.txt && \
     rm /tmp/python-requirements.txt
 
 RUN echo "Install all needed PHP utilities and packages" && \
