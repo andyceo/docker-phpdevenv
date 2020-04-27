@@ -153,11 +153,13 @@ RUN echo "Add cryptocurrencies repositories and nodes" && \
     echo "deb https://apt.z.cash/ jessie main" | tee /etc/apt/sources.list.d/zcash.list && \
 
     # Install cryptocurrencies nodes
-    apt-get update && \
-    apt-get install -yqq \
-      bitcoind \
-      ethereum \
-      zcash
+    apt-get update
+
+    # @todo fix: Temporarily disable installing crypto nodes due to error "Unable to locate package bitcoind"
+#    apt-get install -yqq \
+#      bitcoind \
+#      ethereum \
+#      zcash
 
 #RUN echo "Install mysql server with root user creation" && \
 #    echo 'mysql-server mysql-server-5.7/root_password password 123qwe' | debconf-set-selections && \
