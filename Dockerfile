@@ -20,7 +20,7 @@ LABEL org.labelschema.description="This is the image with several PHP versions (
 ENV DEBIAN_FRONTEND="noninteractive"
 ENV TERM="xterm"
 ENV PHP_MODULES="amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
-ENV GO_ARCHIVE_FILENAME="go1.14.2.linux-amd64.tar.gz"
+ENV GO_ARCHIVE_FILENAME="go1.15.6.linux-amd64.tar.gz"
 ENV PYTHONIOENCODING="utf-8"
 
 RUN echo "Prepare package manager for installing packages and add support for https protocol in apt manager" && \
