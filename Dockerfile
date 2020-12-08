@@ -181,7 +181,7 @@ RUN apt-get install -yqq libgmp3-dev && \
 
 RUN echo "Install all needed PHP utilities and packages" && \
     apt-get install -yqq \
-        php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
+#        php5.6 `echo " $PHP_MODULES" | sed "s/ / php5.6-/g"` \
         php7.0 `echo " $PHP_MODULES" | sed "s/ / php7.0-/g"` \
         php7.1 `echo " $PHP_MODULES" | sed "s/ / php7.1-/g"` \
         php-pear \
