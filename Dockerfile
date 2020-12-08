@@ -230,7 +230,7 @@ RUN echo "Finalize all other packages install" && \
     sed -i 's/^PATH="\(.*\)"$/PATH="\1:\/usr\/local\/go\/bin"/g' /etc/environment && \
 
     # Finalize mongodb installation (changing storage, see etc/mongod.conf)
-    cp -al /var/lib/mongodb /root && \
+    #cp -al /var/lib/mongodb /root && \
 
     # Set locale for US and RU
     locale-gen en_US en_US.UTF-8 && \
