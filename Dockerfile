@@ -205,8 +205,9 @@ RUN echo "Install all needed PHP utilities and packages" && \
     chmod +x /usr/local/bin/phpunit && \
 
     # PHP-CS-Fixer
-    curl http://get.sensiolabs.org/php-cs-fixer.phar -LSso /usr/local/bin/php-cs-fixer && \
-    chmod +x /usr/local/bin/php-cs-fixer && \
+    # Site is broken, temporarily disable
+    #curl http://get.sensiolabs.org/php-cs-fixer.phar -LSso /usr/local/bin/php-cs-fixer && \
+    #chmod +x /usr/local/bin/php-cs-fixer && \
 
     # Codeception
     curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept && \
