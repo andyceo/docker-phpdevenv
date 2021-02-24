@@ -73,28 +73,28 @@ RUN echo "Install all needed basic utilities and packages" && \
 #        denyhosts \
         dnsutils \
         freebsd-manpages \
-        git \
-        gmt-common \
-        htop \
-        imagemagick \
-        iputils-arping \
-        iputils-ping \
-        libboost-all-dev \
-        libffi-dev \
-        libssl-dev \
-        locales \
-        man2html \
-        manpages \
-        manpages-dev \
-        mc \
-        memcached \
-#        mongodb-org \
-        mysql-client \
-        nano \
-        net-tools \
-        netcat \
-        nginx \
-        nmap
+        git
+#        gmt-common \
+#        htop \
+#        imagemagick \
+#        iputils-arping \
+#        iputils-ping \
+#        libboost-all-dev \
+#        libffi-dev \
+#        libssl-dev \
+#        locales \
+#        man2html \
+#        manpages \
+#        manpages-dev \
+#        mc \
+#        memcached \
+##        mongodb-org \
+#        mysql-client \
+#        nano \
+#        net-tools \
+#        netcat \
+#        nginx \
+#        nmap \
 #        openjdk-8-source \
 #        openssh-server \
 #        pkg-config \
