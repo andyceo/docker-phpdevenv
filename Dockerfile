@@ -1,10 +1,8 @@
 ##################################################################
 # Dockerfile to build environment for php developer (LEP stack)  #
-# Based on Ubuntu 18.04                                          #
 ##################################################################
 
-# Set the base image to Ubuntu
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Labels
 LABEL org.labelschema.description="This is the image with several PHP versions (from official Ubuntu PPA), python libraries and other developers tools. It can be used as lightweight virtual machine for developers." \
