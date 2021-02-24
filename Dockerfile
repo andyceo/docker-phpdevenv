@@ -36,8 +36,8 @@ RUN echo "Add all needed repositories (PPAs and others)" && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62 && \
 
     # Add repository and repository key for php PPA repository
-    echo 'deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main' > /etc/apt/sources.list.d/php.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
+#    echo 'deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main' > /etc/apt/sources.list.d/php.list && \
+#    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
 
     # Add repository and repository key for tor official repository
     # @see https://www.torproject.org/docs/debian.html.en
@@ -94,31 +94,31 @@ RUN echo "Install all needed basic utilities and packages" && \
         net-tools \
         netcat \
         nginx \
-        nmap \
-        openjdk-8-source \
-        openssh-server \
-        pkg-config \
-        privoxy \
-        pwgen \
-        redis-server \
-        redis-sentinel \
-        redis-tools \
-        rsync \
-        rustc \
-        sbt \
-        screen \
-        shellcheck \
-        software-properties-common \
-        sqlite \
-        sqlite-doc \
-        stress \
-        sudo \
-        supervisor \
-        telnet \
-        tmux \
-        tor \
-        ubuntu-standard \
-        wget
+        nmap
+#        openjdk-8-source \
+#        openssh-server \
+#        pkg-config \
+#        privoxy \
+#        pwgen \
+#        redis-server \
+#        redis-sentinel \
+#        redis-tools \
+#        rsync \
+#        rustc \
+#        sbt \
+#        screen \
+#        shellcheck \
+#        software-properties-common \
+#        sqlite \
+#        sqlite-doc \
+#        stress \
+#        sudo \
+#        supervisor \
+#        telnet \
+#        tmux \
+#        tor \
+#        ubuntu-standard \
+#        wget
 
 RUN echo "Install Apache 2 on non-standard port" && \
     sed -i -e 's/80/81/g' /etc/apache2/ports.conf
