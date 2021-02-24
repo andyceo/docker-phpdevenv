@@ -15,10 +15,10 @@ LABEL org.labelschema.description="This is the image with several PHP versions (
       run="/usr/bin/docker run -d --name phpdevenv --restart always --hostname phpdevenv --net docknet -p 80:80 -p 22:22 ${IMAGE}"
 
 # Set neccessary environment variables and declare variables for installing popular Python and PHP extensions
-ENV DEBIAN_FRONTEND="noninteractive"
-    TERM="xterm"
-    PHP_MODULES="amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
-    GO_ARCHIVE_FILENAME="go1.16.linux-amd64.tar.gz"
+ENV DEBIAN_FRONTEND="noninteractive" \
+    TERM="xterm" \
+    PHP_MODULES="amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug" \
+    GO_ARCHIVE_FILENAME="go1.16.linux-amd64.tar.gz" \
     PYTHONIOENCODING="utf-8"
 
 RUN echo "Prepare package manager for installing packages and add support for https protocol in apt manager" && \
