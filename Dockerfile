@@ -16,10 +16,10 @@ LABEL org.labelschema.description="This is the image with several PHP versions (
 
 # Set neccessary environment variables and declare variables for installing popular Python and PHP extensions
 ENV DEBIAN_FRONTEND="noninteractive"
-ENV TERM="xterm"
-ENV PHP_MODULES="amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
-ENV GO_ARCHIVE_FILENAME="go1.16.linux-amd64.tar.gz"
-ENV PYTHONIOENCODING="utf-8"
+    TERM="xterm"
+    PHP_MODULES="amqp bcmath cli common curl dev fpm gd intl json ldap mbstring mcrypt mongodb mysql opcache pdo-sqlite readline soap sybase xml zip memcached redis imagick xdebug"
+    GO_ARCHIVE_FILENAME="go1.16.linux-amd64.tar.gz"
+    PYTHONIOENCODING="utf-8"
 
 RUN echo "Prepare package manager for installing packages and add support for https protocol in apt manager" && \
     apt-get update && apt-get upgrade -yqq && \
@@ -70,7 +70,7 @@ RUN echo "Install all needed basic utilities and packages" && \
         debconf-utils \
         deb.torproject.org-keyring \
         default-jre \
-        denyhosts \
+#        denyhosts \
         dnsutils \
         freebsd-manpages \
         git \
